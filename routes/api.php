@@ -20,20 +20,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('companies')->group(function(){
     Route::get('/',[CompanyController::class, 'index'])->name('companies.get');
-    Route::get('/{company_id}',[CompanyController::class, 'show'])->name('company.show');
     Route::post('/insert',[CompanyController::class, 'store'])->name('company.store');
     Route::delete('/{company_id}',[CompanyController::class, 'destroy'])->name('company.delete');
     Route::put('/{company_id}',[CompanyController::class, 'update'])->name('company.update');
+    Route::get('/{company_id}',[CompanyController::class, 'show'])->name('company.show');
     Route::get('/{company_id}/restaurants',[CompanyController::class, 'restaurants'])->name('company.restaurants');
 });
 
 Route::prefix('restaurants')->group(function(){
     Route::get('/',[RestaurantController::class, 'index'])->name('restaurants.get');
-    Route::get('{restaurat_id}',[RestaurantController::class, 'show'])->name('restaurants.show');
-    Route::delete('{restaurat_id}',[RestaurantController::class, 'destroy'])->name('restaurants.delete');
-    Route::put('{restaurat_id}',[RestaurantController::class, 'update'])->name('restaurants.update');
     Route::post('/insert',[RestaurantController::class, 'store'])->name('restaurants.store');
-    Route::get('/{restaurat_id}/menus',[RestaurantController::class, 'menus'])->name('restaurants.menus');
+    Route::delete('/{company_id}',[RestaurantController::class, 'destroy'])->name('restaurants.delete');
+    Route::put('/{company_id}',[RestaurantController::class, 'update'])->name('restaurants.update');
+    Route::get('/{company_id}',[RestaurantController::class, 'show'])->name('restaurants.show');
+    Route::get('/{company_id}/restaurants',[RestaurantController::class, 'menus'])->name('restaurants.menus');
 });
 
 Route::prefix('menus')->group(function(){

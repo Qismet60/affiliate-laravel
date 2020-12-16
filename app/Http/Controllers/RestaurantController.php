@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Restaurant\RestaurantRequest;
+use App\Models\Company;
 use App\Models\Menu;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -31,6 +32,14 @@ class RestaurantController extends Controller
      */
     public function store(RestaurantRequest $request)
     {
+        $validated = $request->validated();
+        $compId = $validated['company_id'];
+        $comp = Company::find($compId);
+        if(!$comp){
+            return response()->json([
+                'message' => 'Company not found'
+            ],200);
+        }
         $res = Restaurant::create($request->validated());
         return response()->json([
             'Restaurants' => $res

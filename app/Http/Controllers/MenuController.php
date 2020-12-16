@@ -31,8 +31,9 @@ class MenuController extends Controller
      */
     public function store(MenuRequest $request)
     {
-        $resId = $request->validated('restaurant_id');
-        $compId = $request->validated('company_id');
+        $validated = $request->validated();
+        $resId =(int) $validated['restaurant_id'];
+        $compId = (int) $validated['company_id'];
         $res = Restaurant::find($resId);
         if(!$res){
             return response()->json([

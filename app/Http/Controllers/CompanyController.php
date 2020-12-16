@@ -47,13 +47,11 @@ class CompanyController extends Controller
         $company = Company::find($id);
         if(!$company){
             return response()->json([
-                'status' => false,
                 'message' => 'company not found'
             ],404);
         }
         else{
             return response()->json([
-                'status' => true,
                 'company' => $company
             ],200);
         }
@@ -71,13 +69,11 @@ class CompanyController extends Controller
         $company = Company::find($id);
         if(!$company){
             return response()->json([
-                'status' => false,
                 'message' => 'company not found'
             ],404);
         }else{
             $company->update($request->validated());
             return response()->json([
-                'status' => true,
                 'company' => $company
             ],404);
         }
@@ -94,13 +90,11 @@ class CompanyController extends Controller
         $company = Company::find($id);
         if(!$company){
             return response()->json([
-                'status' => false,
                 'message' => 'company not found'
             ],404);
         }else{
             $company->delete();
             return response()->json([
-                'status' => true,
                 'message' => 'company delete'
             ],200);
         }

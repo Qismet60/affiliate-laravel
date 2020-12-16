@@ -20,7 +20,7 @@ class CreateRestaurantsTable extends Migration
             $table->integer('delivery_time');
             $table->timestamps();
         });
-    }
+    }   
 
     /**
      * Reverse the migrations.
